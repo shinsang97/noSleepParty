@@ -1,7 +1,7 @@
 package com.sparta.nosleep3.controller;
 
 
-import com.sparta.nosleep3.dto.reponsedto.ArticleReponseDto;
+import com.sparta.nosleep3.dto.reponsedto.ArticleResponseDto;
 import com.sparta.nosleep3.dto.requestdto.ArticleRequestDto;
 import com.sparta.nosleep3.repository.ArticleRepository;
 import com.sparta.nosleep3.security.UserDetailsImpl;
@@ -26,12 +26,12 @@ public class ArticleController {
     }
 
     @GetMapping("/api/article")
-    public List<ArticleReponseDto> getArticle(){
+    public List<ArticleResponseDto> getArticle(){
         return articleService.getArticles();
     }
 
     @PutMapping("/api/article/{artcleId}")
-    public ArticleReponseDto update(@RequestBody ArticleRequestDto articleRequestDto,@PathVariable Long artcleId,@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ArticleResponseDto update(@RequestBody ArticleRequestDto articleRequestDto, @PathVariable Long artcleId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return articleService.update(articleRequestDto, artcleId, userDetails);
     }
 
