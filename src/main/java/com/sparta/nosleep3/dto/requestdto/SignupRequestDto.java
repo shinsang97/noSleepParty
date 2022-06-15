@@ -9,14 +9,14 @@ import org.intellij.lang.annotations.Pattern;
 @Setter
 public class SignupRequestDto {
 
-    @NotBlank
-    @Pattern(regexp = "(?=.*[0-9a-zA-Z]).{4,20}")
+//    @NotBlank
+//    @Pattern(regexp = "(?=.*[0-9a-zA-Z]).{4,20}")
     private String username;
 
-    @NotBlank
-    @Pattern(regexp = "(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\d~!@#$%^&*()+|=]{4,20}")
+//    @NotBlank
+//    @Pattern(regexp = "(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\d~!@#$%^&*()+|=]{4,20}")
     private String password;
 
-    @NotBlank
+//    @NotBlank
     private String profilePic;
 }

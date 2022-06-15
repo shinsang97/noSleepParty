@@ -1,7 +1,7 @@
 package com.sparta.nosleep3.service;
 
 import com.sparta.nosleep3.domain.Article;
-import com.sparta.nosleep3.dto.reponsedto.ArticleReponseDto;
+import com.sparta.nosleep3.dto.reponsedto.ArticleResponseDto;
 import com.sparta.nosleep3.dto.requestdto.ArticleRequestDto;
 import com.sparta.nosleep3.repository.ArticleRepository;
 import com.sparta.nosleep3.security.UserDetailsImpl;
@@ -29,24 +29,24 @@ public class ArticleService {
         }
     }
 
-    public List<ArticleReponseDto> getArticles() {
-        List<ArticleReponseDto> articleReponseDtos = new ArrayList<>();
+    public List<ArticleResponseDto> getArticles() {
+        List<ArticleResponseDto> articleResponseDtos = new ArrayList<>();
         List<Article> articleList = articleRepository.findAllByOrderByModifiedAtDesc();
         for(int i = 0; i < articleList.size(); i++){
             // 객체생성
-            ArticleReponseDto articleReponseDto = new ArticleReponseDto(articleList.get(i));
-            articleReponseDtos.add(articleReponseDto);
+            ArticleResponseDto articleResponseDto = new ArticleResponseDto(articleList.get(i));
+            articleResponseDtos.add(articleResponseDto);
         }
-        return articleReponseDtos;
+        return articleResponseDtos;
     }
 
-    public ArticleReponseDto update(ArticleRequestDto articleRequestDto, Long artcleId, UserDetailsImpl userDetails) {
+    public ArticleResponseDto update(ArticleRequestDto articleRequestDto, Long artcleId, UserDetailsImpl userDetails) {
         Article article = articleRepository.findById(artcleId).orElseThrow(
                 () -> new IllegalArgumentException("게시글이 존재하지 않습니다.")
         );
         article.update(articleRequestDto,userDetails);
         articleRepository.save(article);
-        return new ArticleReponseDto(article);
+        return new ArticleResponseDto(article);
     }
 
     public ResponseEntity delete(Long artcleId, UserDetailsImpl userDetails) {
